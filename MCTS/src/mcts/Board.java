@@ -100,9 +100,9 @@ public class Board {
 				if (boardValues[i][j]==2) j2++; 
 			}
 		}
-		if (j1==0){ return P2;}
+		if (j1<10){ return P2;}
 		else
-			if (j2==0){ return P1;}
+			if (j2<10){ return P1;}
 			else{return IN_PROGRESS;}
 
 
@@ -178,17 +178,7 @@ public class Board {
 
 
 
-	public List<Position> getEmptyPositions() {
-		int size = this.boardValues.length;
-		List<Position> emptyPositions = new ArrayList<>();
-		for (int i = 0; i < size; i++) {
-			for (int j = 0; j < size; j++) {
-				if (boardValues[i][j] == 0)
-					emptyPositions.add(new Position(i, j));
-			}
-		}
-		return emptyPositions;
-	}
+
 	public void allPossibleMoves( int couleur){
 		for(int i=0; i<9; i++){
 			for(int j=0; j<9; j++){
@@ -209,27 +199,27 @@ public class Board {
 
 
 			if(i-1>=0 && j-1>=0 && boardValues[i-1][j-1]==0){
-				boardValues[i-1][j-1]=7;
+				//boardValues[i-1][j-1]=7;
 				totalMove.add(new Moves(new Position(i,j),new Position(i-1,j-1)));
 
 			}
 			else if(i-2>=0 && j-2>=0 && boardValues[i-2][j-2]==0 && !((boardValues[i-1][j-1])==couleur)&& !((boardValues[i-1][j-1])==7)){
-				boardValues[i-2][j-2]=7;
+				//boardValues[i-2][j-2]=7;
 				totalMove.add(new Moves(new Position(i,j),new Position(i-2,j-2)));
 			}
 
 			if(i-1>=0 && j+1<9 && boardValues[i-1][j+1]==0){
-				boardValues[i-1][j+1]=7;
+				//boardValues[i-1][j+1]=7;
 				totalMove.add(new Moves(new Position(i,j),new Position(i-1,j+1)));
 			}
 			else if(i-2>=0 && j+2<9 && boardValues[i-2][j+2]==0 && !((boardValues[i-1][j+1])==couleur)&& !((boardValues[i-1][j+1])==7)){
-				boardValues[i-2][j+2]=7;
+				//boardValues[i-2][j+2]=7;
 				totalMove.add(new Moves(new Position(i,j),new Position(i-2,j+2)));
 			}
 		}
 		else{
 			if(i+1<9 && j+1<9 && boardValues[i+1][j+1]==0){
-				boardValues[i+1][j+1]=7;
+				//boardValues[i+1][j+1]=7;
 				totalMove.add(new Moves(new Position(i,j),new Position(i+1,j+1)));
 			}
 			else if(i+2<9 && j+2<9 && boardValues[i+2][j+2]==0 && !((boardValues[i+1][j+1])==couleur)&& !((boardValues[i+1][j+1])==7)){

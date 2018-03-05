@@ -79,16 +79,18 @@ public class test {
 			     // System.out.println("");
 			      //System.out.println("status======"+board.checkStatus()); 
 			          
-
-		        int player = Board.P2;
+			      	
+		            int player = Board.P2;
 		        
-		    
+		            mcts.setLevel(3);
 		        	board = mcts.findNextMove(board, player);
 		                       
 		                        System.out.println("player"+player);
 		        
 		        int winStatus = board.checkStatus();
+		        System.out.println("board final");
 		        board.VueGrille();
+		        
 		    
 		        
 

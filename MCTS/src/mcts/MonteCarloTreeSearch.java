@@ -11,7 +11,7 @@ public class MonteCarloTreeSearch {
     private int oponent;
 
     public MonteCarloTreeSearch() {
-        this.level = 1;
+        this.level = 2;
     }
 
     public int getLevel() {
@@ -23,7 +23,7 @@ public class MonteCarloTreeSearch {
     }
 
     private int getMillisForCurrentLevel() {
-        return 2 * (this.level - 1) + 1;
+        return 60 * (this.level - 1) + 1;
     }
 
     public Board findNextMove(Board board, int playerNo) {
@@ -89,7 +89,9 @@ public class MonteCarloTreeSearch {
             tempNode.getState().incrementVisit();
             if (tempNode.getState().getPlayerNo() == playerNo)
                 tempNode.getState().addScore(WIN_SCORE);
+            System.out.println("modification du score"+WIN_SCORE);
             tempNode = tempNode.getParent();
+            System.out.println("monté ver parentD");
         }
     }
 
@@ -106,6 +108,7 @@ public class MonteCarloTreeSearch {
         while (boardStatus == Board.IN_PROGRESS) {
 System.out.println("Board.IN_PROGRESS");        	
             tempState.togglePlayer();
+            
             tempState.randomPlay();
             boardStatus = tempState.getBoard().checkStatus();
         }

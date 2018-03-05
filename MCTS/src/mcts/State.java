@@ -14,7 +14,7 @@ public class State {
 
     public State() {
         board = new Board();
-        this.board.allPossibleMoves(this.playerNo);
+        //this.board.allPossibleMoves(this.playerNo);
     }
 
     public State(State state) {
@@ -27,7 +27,7 @@ public class State {
 
     public State(Board board) {
         this.board = new Board(board);
-        this.board.allPossibleMoves(this.playerNo);
+        //this.board.allPossibleMovess(this.playerNo);
     }
 
     Board getBoard() {
@@ -69,6 +69,8 @@ public class State {
     public List<State> getAllPossibleStates() {
     	
         List<State> possibleStates = new ArrayList<>();
+       
+     
         this.board.allPossibleMoves(this.playerNo);
         List<Moves> availablePositions = this.board.totalMove;
         
@@ -77,11 +79,16 @@ public class State {
             newState.setPlayerNo(3 - this.playerNo);
             newState.getBoard().performMove(newState.getPlayerNo(), p.MoveI,p.MoveF);
             possibleStates.add(newState);
+            newState.getBoard().VueGrille();
+            System.out.println("state ajouté");
+            
         });
+        //board.totalMove.clear();
         return possibleStates;
     }
 
     void incrementVisit() {
+    	System.out.println("incrementVisit");
         this.visitCount++;
     }
 
@@ -92,12 +99,21 @@ public class State {
 
     void randomPlay() {
     	
+    	
+    	 //board.totalMove.clear();
+         
+         this.board.allPossibleMoves(this.playerNo);
+         
+    	
         List<Moves> availablePositions = this.board.totalMove;
         int totalPossibilities = board.totalMove.size();
         int selectRandom = (int) (Math.random() * ((totalPossibilities - 1) + 1));
         this.board.performMove(this.playerNo, availablePositions.get(selectRandom).MoveI,availablePositions.get(selectRandom).MoveF);
+        
         System.out.println("");
-        board.printBoard();
+       // board.totalMove.clear();
+        
+        board.VueGrille();
         System.out.println("");
     }
     
