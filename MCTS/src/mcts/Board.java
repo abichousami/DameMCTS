@@ -12,7 +12,7 @@ import java.util.List;
 public class Board {
 	int[][] boardValues;
 
-	List<Moves> totalMove = new ArrayList<>(); ;
+	List<Moves> totalMove = new ArrayList<>(); 
 	public static final int DEFAULT_BOARD_SIZE = 9;
 
 	public static final int IN_PROGRESS = -1;
@@ -38,7 +38,10 @@ public class Board {
 		}
 
 	}
+	
 
+	
+	
 	public Board(int boardSize) {
 		boardValues = new int[boardSize][boardSize];
 	}
@@ -223,15 +226,15 @@ public class Board {
 				totalMove.add(new Moves(new Position(i,j),new Position(i+1,j+1)));
 			}
 			else if(i+2<9 && j+2<9 && boardValues[i+2][j+2]==0 && !((boardValues[i+1][j+1])==couleur)&& !((boardValues[i+1][j+1])==7)){
-				boardValues[i+2][j+2]=7;
+				//boardValues[i+2][j+2]=7;
 				totalMove.add(new Moves(new Position(i,j),new Position(i+2,j+2)));
 			}
 			if(i+1<9 && j-1>=0 && boardValues[i+1][j-1]==0){
-				boardValues[i+1][j-1]=7;
+				//boardValues[i+1][j-1]=7;
 				totalMove.add(new Moves(new Position(i,j),new Position(i+1,j-1)));
 			}
 			else if(i+2<9 && j-2>=0 && boardValues[i+2][j-2]==0 && !((boardValues[i+1][j-1])==couleur)&& !((boardValues[i+1][j-1])==7)){
-				boardValues[i+2][j-2]=7;
+				//boardValues[i+2][j-2]=7;
 				totalMove.add(new Moves(new Position(i,j),new Position(i+2,j-2)));
 
 

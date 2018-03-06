@@ -1,6 +1,7 @@
 package mcts;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 
@@ -52,6 +53,12 @@ public class MonteCarloTreeSearch {
             
             int playoutResult = simulateRandomPlayout(nodeToExplore);
             // Phase 4 - Update
+//          try {
+//       			TimeUnit.SECONDS.sleep(2);
+//       		} catch (InterruptedException e) {
+//       			// TODO Auto-generated catch block
+//       			e.printStackTrace();
+//       		}
             backPropogation(nodeToExplore, playoutResult);
         }
 
@@ -61,10 +68,12 @@ public class MonteCarloTreeSearch {
     }
 
     private Node selectPromisingNode(Node rootNode) {
-        System.out.println("selectPromisingNode");
     	Node node = rootNode;
+
         while (node.getChildArray().size() != 0) {
-            node = UCT.findBestNodeWithUCT(node);
+        	System.out.println("selectPromisingNode with score="+UCT.findBestNodeWithUCT(node));
+            
+        	node = UCT.findBestNodeWithUCT(node);
         }
         return node;
     }
@@ -91,7 +100,7 @@ public class MonteCarloTreeSearch {
                 tempNode.getState().addScore(WIN_SCORE);
             System.out.println("modification du score"+WIN_SCORE);
             tempNode = tempNode.getParent();
-            System.out.println("monté ver parentD");
+            System.out.println("montï¿½ ver parentD");
         }
     }
 

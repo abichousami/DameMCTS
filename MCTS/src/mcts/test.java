@@ -57,11 +57,11 @@ public class test {
 	        board.performMove(1, availablePositions.get(selectRandom).MoveI,availablePositions.get(selectRandom).MoveF);
 	        board.allPossibleMoves(board.P1);
 	        board.VueGrille();*/
-		 Tree gameTree;
+		// Tree gameTree;
 		    MonteCarloTreeSearch mcts;
 
 		   
-		        gameTree = new Tree();
+		  //      gameTree = new Tree();
 		        mcts = new MonteCarloTreeSearch();
 		        Board board = new Board();
 		        System.out.println("status======"+board.checkStatus()); 
@@ -90,6 +90,16 @@ public class test {
 		        int winStatus = board.checkStatus();
 		        System.out.println("board final");
 		        board.VueGrille();
+		       
+		        Node root1= Tree.getRoot();
+		        root1= root1.getParent();
+		        // root1= root1.getParent();
+		        //UCT.afficheBestNodeWithUCT(root1);
+		        
+		       root1.parcourir(root1);
+		      
+		        	
+		        }
 		        
 		    
 		        
@@ -97,4 +107,4 @@ public class test {
 		        
 	
 
-}}
+}

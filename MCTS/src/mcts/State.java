@@ -3,6 +3,7 @@ package mcts;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 
@@ -75,7 +76,7 @@ public class State {
         List<Moves> availablePositions = this.board.totalMove;
         
         availablePositions.forEach(p -> {
-            State newState = new State(this.board);
+            State newState = new State(new Board(this.board.boardValues));
             newState.setPlayerNo(3 - this.playerNo);
             newState.getBoard().performMove(newState.getPlayerNo(), p.MoveI,p.MoveF);
             possibleStates.add(newState);
@@ -115,6 +116,12 @@ public class State {
         
         board.VueGrille();
         System.out.println("");
+//        try {
+//			TimeUnit.SECONDS.sleep(2);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
     }
     
 

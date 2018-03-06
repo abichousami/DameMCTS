@@ -48,6 +48,7 @@ public class Node {
     }
 
     public Node getParent() {
+    	
         return parent;
     }
 
@@ -76,5 +77,26 @@ public class Node {
             return c.getState().getVisitCount();
         }));
     }
-
+    public void parcourir(Node parent) {
+    	int nombreDeFils = parent.getChildArray().size();
+    	System.out.println("");
+    	System.out.println("nbre des fils: "+nombreDeFils);
+    	for (int i = 0 ; i < nombreDeFils ; i++) {
+    		
+    		List<Node> listFils= parent.getChildArray();
+    		
+    	Node fils = listFils.get(i);
+    	System.out.print("W:"+fils.getState().getWinScore()+"|V:"+fils.getState().getVisitCount()+" ");
+    	//parcourir(fils);
+    	}
+	for (int i = 0 ; i < nombreDeFils ; i++) {
+    		
+    		List<Node> listFils= parent.getChildArray();
+    		
+    	Node fils = listFils.get(i);
+    	//System.out.print(""+fils.getState().getWinScore()+""+fils.getState().getVisitCount());
+    	parcourir(fils);
+    	}
+    
+    	}
 }

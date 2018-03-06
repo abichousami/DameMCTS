@@ -1,10 +1,15 @@
 package mcts;
 
-public class Tree {
-    Node root;
+import java.util.concurrent.TimeUnit;
 
+public class Tree {
+	
+    static Node root;
+    
     public Tree() {
-        root = new Node();
+       root = new Node();
+        
+        
         System.out.println("Tree() cree");
     }
 
@@ -14,7 +19,7 @@ public class Tree {
         this.root = root;
     }
 
-    public Node getRoot() {
+    static  public Node getRoot() {
         return root;
     }
 
@@ -25,6 +30,15 @@ public class Tree {
     public void addChild(Node parent, Node child) {
         System.out.println("enfant ajouté");
         
+        if(parent.getChildArray().size()==0)System.out.println("_");
+        else System.out.print("_FILS_ ");//child.state.get.
+//      try {
+//			TimeUnit.SECONDS.sleep(2);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+
         parent.getChildArray().add(child);
     }
 
